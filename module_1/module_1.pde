@@ -1,3 +1,8 @@
+float amplitude = 30;
+float frequency = 0.1;
+float waveOffset = 0;
+float waveSpeed = 0.1;
+
 void setup()
 {
   size(1280, 720, P3D);
@@ -21,6 +26,8 @@ void draw()
   drawQuadraticFunction();
   //drawCircle();
   drawSineWave();
+  
+  waveOffset += waveSpeed;
 }
 
 void drawCartesianPlane()
@@ -90,11 +97,31 @@ void drawSineWave()
   fill(green);
   noStroke();
   
-  float amplitude = 30;
-  float frequency = 0.1f;
-  
   for (float x = -300; x <= 300; x += 0.1f)
   {
-    circle(x, ((float)sin(x * frequency) * amplitude), 5);
+    circle(x, ((float)sin((x * frequency) + waveOffset) * amplitude), 5);
+  }
+}
+
+void keyPressed()
+{
+  if (key == 'w')
+  {
+    amplitude += 5;
+  }
+  
+  if (key == 's')
+  {
+    amplitude -= 5;
+  }
+  
+  if (key == 'd')
+  {
+    frequency += 0.01;
+  }
+  
+  if (key == 'a')
+  {
+    frequency -= 0.01;
   }
 }
