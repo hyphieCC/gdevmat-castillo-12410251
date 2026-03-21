@@ -7,6 +7,11 @@ void setup()
 
 void draw()
 {
+  if (frameCount % 300 == 0) //https://processing.org/reference/frameCount.html
+  {
+    background(255);
+  }
+  
   float gaussianX = randomGaussian();
   float standardDeviationX = width/5.0;
   float meanX = 0;
